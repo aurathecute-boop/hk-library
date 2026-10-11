@@ -13,7 +13,7 @@ Reusable skill (not a dedicated bot). Automate with scripts; the assistant only 
 Nearby branches, facilities/computers, new arrivals, ebooks, borrowing Top 100, shelf/holdings lookups, multi-branch coverage, short visit routes. **Never** log into a patron account, renew, reserve, or pay fines.
 
 ## Layout
-Skill folder: `/home/box/agent-data/workflows/hk-library/`
+Skill folder: `/workspace/projects/hk-library/`
 - `scripts/` — callable helpers (bash/python)
 - `PRD.md` — product scope (optional copy from `/workspace/hk-library-assistant/PRD.md`)
 
