@@ -46,6 +46,9 @@ bash scripts/harry-potter-1-holdings.sh
 ## Out of scope
 No patron login, renew, reserve, pay fines, or storing library card credentials.
 
+## Reference
+- [Call number classification (索書號)](./docs/call-number-classification.md)
+
 ## Docs
 - `SKILL.md` — agent recipe (English)
 - `PRD.md` — product requirements (Chinese draft)

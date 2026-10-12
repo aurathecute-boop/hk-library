@@ -49,3 +49,6 @@ bash scripts/harry-potter-1-holdings.sh
 - `SKILL.md` — agent 步驟（英文）
 - `PRD.md` — 產品需求（中文草稿）
 - `README.md` — 英文總覽
+
+## 參考
+- [索書號分類表](./docs/call-number-classification.md) — HKPL 英文杜威＋中文劉國鈞排架表

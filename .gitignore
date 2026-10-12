@@ -1,3 +1,9 @@
 .venv/
 .cache/
 __pycache__/
+
+# local search scratch
+out_*.json
+out_*.err
+out_*.json.tmp
+*_report.json

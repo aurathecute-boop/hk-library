@@ -23,6 +23,7 @@ Git repo: `/workspace/projects/hk-library/`
 - `scripts/` — callable helpers (bash/python)
 - `PRD.md` — product scope
 - `README.md` / `README.zh-HK.md` — human docs
+- `docs/call-number-classification.md` — HKPL 索書號分類表 (DDC + Chinese CLC)
 
 ## Workflow
 1. Parse intent: location / facilities / lists / title holdings / multi-book route / wishlist.
