@@ -28,14 +28,19 @@ Skill folder: `/workspace/projects/hk-library/`
 
 ## Scripts (run from skill folder)
 ```bash
+cd /workspace/projects/hk-library
 bash scripts/libraries-nearby.sh "<lat>" "<lng>" [n]
 bash scripts/computers.sh
 bash scripts/new-add.sh
 bash scripts/ebooks.sh [query]
 bash scripts/top100.sh
 bash scripts/webcat-search.sh "<short title keywords>"
-# later: bash scripts/webcat-item.sh "chamo:<id>"
+# holdings (Playwright; needs .venv)
+bash scripts/webcat-item.sh chamo:<id>
+bash scripts/harry-potter-1-holdings.sh          # demo: HP1 神秘的魔法石
+.venv/bin/python scripts/webcat_holdings.py --search "哈利波特 魔法石" --pick 1
 ```
+First-time Playwright setup: `python3 -m venv .venv && .venv/bin/pip install playwright && .venv/bin/playwright install chromium`
 Implement missing scripts before inventing one-off loops. Cross-bot rule: filter/compute in script; assistant writes the answer.
 
 ## Webcat rules

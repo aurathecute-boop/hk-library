@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-# Placeholder: holdings for one item — prefer Playwright once flow is learned
+# Holdings for one webcat item (Playwright)
 set -euo pipefail
-ID="${1:?usage: webcat-item.sh chamo:ID}"
-ID="${ID#chamo:}"
-URL="https://webcat.hkpl.gov.hk/lib/item?id=chamo:${ID}&theme=WEB"
-echo "source=webcat 館藏頁"
-echo "url=$URL"
-echo "TODO: Playwright script to scrape branch/copy/status tables; do not rely on brittle curl+regex alone."
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ID="${1:?usage: webcat-item.sh chamo:ID|--harry-potter-1}"
+PY="$ROOT/.venv/bin/python"
+if [[ ! -x "$PY" ]]; then
+  echo "missing $PY — run: python3 -m venv .venv && .venv/bin/pip install playwright && .venv/bin/playwright install chromium" >&2
+  exit 1
+fi
+if [[ "$ID" == "--harry-potter-1" || "$ID" == "harry-potter-1" ]]; then
+  exec "$PY" "$ROOT/scripts/webcat_holdings.py" --harry-potter-1 "${@:2}"
+fi
+exec "$PY" "$ROOT/scripts/webcat_holdings.py" --item "$ID" "${@:2}"
