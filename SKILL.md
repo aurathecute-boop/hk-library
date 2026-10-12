@@ -27,8 +27,8 @@ Git repo: `/workspace/projects/hk-library/`
 ## Workflow
 1. Parse intent: location / facilities / lists / title holdings / multi-book route / wishlist.
 2. Prefer **data.gov.hk** via scripts (or `@hkdata` for discovery). Cite dataset id and data date.
-3. For shelf status: short-keyword webcat search → item URL → **Playwright** holdings script.
-   Do not use brittle curl+regex on HTML as the primary holdings path.
+3. Title search: **Playwright** `webcat-search-pw.sh` (not RSS). Shelf status: item URL → **Playwright** holdings script.
+   Do not use brittle curl+regex on HTML as the primary path; RSS has no useful paging.
 4. Maps: multi-point maplink; single point Google Maps OK. State the centre used for “nearby”.
 5. Charts: dark QuickChart (bg `#111827`, text `#e5e7eb`, grid `#374151`, Noto Sans CJK TC).
 6. Reply in **Hong Kong Cantonese**. Tag every fact with one of:
@@ -45,7 +45,10 @@ bash scripts/computers.sh
 bash scripts/new-add.sh [chi-adult|chi-junior|eng-adult|eng-junior] [n]
 bash scripts/ebooks.sh [query]
 bash scripts/top100.sh
-bash scripts/webcat-search.sh "<short title keywords>"
+# title search — prefer Playwright (50/page + pagination); curl HTML is fallback only
+bash scripts/webcat-search-pw.sh "債券" --page-size 50 --max 100
+bash scripts/webcat-search-pw.sh "bond investing" --json --max 50
+bash scripts/webcat-search.sh "<short keywords>"   # curl HTML, limited
 
 # holdings (Playwright; needs .venv)
 bash scripts/webcat-item.sh chamo:<id>
@@ -60,11 +63,13 @@ Implement or extend scripts before inventing one-off loops. Filter/compute in sc
 assistant writes the answer.
 
 ## Webcat rules
+- **Search:** use Playwright `webcat_search.py` / `webcat-search-pw.sh` (OPAC page size up to 50, `pageNumber` pagination). Returns title, item URL, publication, call number, series, and a shelf-availability hint. RSS syndication is limited (few hits, no paging) — OK for new-arrival feeds only.
 - Search with short keywords; PHRASE must match catalogue wording.
 - Item URL: `https://webcat.hkpl.gov.hk/lib/item?id=chamo:<id>&theme=WEB`
 - All copies: add `&showAll=true`
 - Holdings table: `#tabContents-1 table.table` — branch = col 1, status = col 5
 - Status examples: `館內架上` (on shelf), `到期日 YYYY-MM-DD` (on loan), `轉移中` (in transit)
+- Always include the webcat item link when listing titles for the user.
 - webcat is the catalogue site; Playwright is the automation tool.
 
 ## Out of scope

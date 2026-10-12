@@ -17,7 +17,8 @@ cd /workspace/projects/hk-library   # 或你嘅 clone 路徑
 bash scripts/new-add.sh chi-adult 15
 
 # 書名搜尋
-bash scripts/webcat-search.sh "哈利波特 魔法石"
+bash scripts/webcat-search-pw.sh "哈利波特 魔法石" --page-size 50 --max 50
+# 後備：bash scripts/webcat-search.sh "哈利波特 魔法石"
 
 # 館藏／架上（Playwright）
 python3 -m venv .venv
@@ -35,7 +36,8 @@ bash scripts/harry-potter-1-holdings.sh
 | `scripts/top100.sh` | 借閱 Top 100 |
 | `scripts/computers.sh` | 電腦室空位 |
 | `scripts/libraries-nearby.sh` | 附近分館（暫為 stub，要接 CSDI） |
-| `scripts/webcat-search.sh` | 目錄書名搜尋 |
+| `scripts/webcat-search.sh` | 目錄書名搜尋（curl HTML；結果有限） |
+| `scripts/webcat_search.py` / `webcat-search-pw.sh` | Playwright 搜尋：每頁最多 50、可翻頁、出版項／索書號／架上提示 |
 | `scripts/webcat_holdings.py` | Playwright 讀分館＋狀態 |
 | `scripts/webcat-item.sh` | 單一 `chamo:` item 包裝 |
 | `scripts/harry-potter-1-holdings.sh` | Demo：中文《神秘的魔法石》 |

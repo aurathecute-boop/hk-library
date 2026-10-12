@@ -37,7 +37,8 @@ bash scripts/harry-potter-1-holdings.sh
 | `scripts/top100.sh` | Top 100 borrowed |
 | `scripts/computers.sh` | Computer room availability |
 | `scripts/libraries-nearby.sh` | Nearby branches (stub — wire CSDI points) |
-| `scripts/webcat-search.sh` | Catalogue title search |
+| `scripts/webcat-search.sh` | Catalogue title search (curl HTML; limited) |
+| `scripts/webcat_search.py` / `webcat-search-pw.sh` | Playwright search: ≤50/page, pagination, publication / call no / shelf hint |
 | `scripts/webcat_holdings.py` | Playwright holdings scrape |
 | `scripts/webcat-item.sh` | Wrapper for one `chamo:` item |
 | `scripts/harry-potter-1-holdings.sh` | Demo: Chinese HP1 (`chamo:3668181`) |
